@@ -1,0 +1,135 @@
+@font-face {
+    font-family: 'scary-halloween';
+    src: url('../fonts/scary_halloween_font-webfont.woff2') format('woff2'),
+     url('../fonts/scary_halloween_font-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'halloween-title';
+    src: url('../fonts/halloweninline.woff2') format('woff2'),
+     url('../fonts/halloweninline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+html {
+    height: 100%;
+}
+body {
+    font-family: 'scary-halloween';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(-45deg, #000426, #000, #010d5d, #0219b5);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+.view h1 {
+    text-align: center;
+    color: #D16805;;
+    font-size: 34px;
+    margin-top: 30px;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes move-clouds-back {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 10000px 0;
+    }
+}
+@-webkit-keyframes move-clouds-back {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 10000px 0;
+    }
+}
+@-moz-keyframes move-clouds-back {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 10000px 0;
+    }
+}
+@-ms-keyframes move-clouds-back {
+    from {
+        background-position: 0;
+    }
+    to {
+        background-position: 10000px 0;
+    }
+}
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 580px;
+  display: block;
+}
+.clouds{
+  background: transparent url(../img/clouds.png) repeat top center;
+  z-index:3;
+  /* -moz-animation:move-clouds-back 200s linear infinite;
+  -ms-animation:move-clouds-back 200s linear infinite;
+  -o-animation:move-clouds-back 200s linear infinite;
+  -webkit-animation:move-clouds-back 200s linear infinite; */
+  animation: move-clouds-back 200s linear infinite;
+}
+
+h1, h2, h3, h4, h5, p, span {
+    /* color: #fff; */
+}
+
+.modal-help {
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+    padding: 50px;
+  }
+  
+  .modal-help .body {
+    background-color: #fff;
+  }
+  
+  .modal-help .close {
+    right: 5px;
+    position: relative;
+    font-size: 30px;
+    text-align: right;
+    top: 30px;
+    cursor: pointer;
+  }
+
+  .vote-button-container {
+    text-align: center;
+    margin: 20px;
+  }
+
+  .vote-button-container-button {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+  }
