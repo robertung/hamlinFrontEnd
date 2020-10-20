@@ -96,17 +96,11 @@ export default class Register extends Login {
 
     private name = '';
 
-    private email = '';
-
     private houseNickName = '';
-
-    private password = '';
 
     private passwordConfirmation = '';
 
-    private errorMessage = false;
-
-    private get buttonDisabled(): boolean {
+    public get buttonDisabled(): boolean {
       return this.name.length > 0
         && this.email.length > 0
         && this.houseNickName.length > 0

@@ -57,7 +57,7 @@ import Login from './Login.vue';
 @Component
 export default class Raffle extends Login {
     
-    private email = '';
+    // private email = '';
 
     private name = '';
 
@@ -65,7 +65,7 @@ export default class Raffle extends Login {
 
     private responseMessage = '';
 
-    private async sendRaffle(): void {
+    private async sendRaffle(): Promise<void> {
 
       const payload: {} = {
         email: this.email,

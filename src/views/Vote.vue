@@ -1,14 +1,13 @@
 <template>
   <div class="vote view">
    <h1>Hamlin Halloween Vote</h1>
-   <h1 v-if="!gallery.length">There are no pumpkins to vote for</h1>
    <b-container>
       <b-row>
         <b-col class="images" v-for="(image, index) in gallery" :key="index">
           <router-link :to="{ path: `/vote/${image.user_id}` }">
             <img style="max-width: 200px;" :src="image.image_path" />
           </router-link>
-        </b-col>  
+        </b-col>
       </b-row>
    </b-container>
   </div>

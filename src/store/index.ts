@@ -4,8 +4,11 @@ import { apiLogin, apiPostImage, apiPost, apiGet, apiDelete } from './common';
 
 Vue.use(Vuex);
 interface Response {
-  data: {},
-  status: {}
+  data: {
+    token: string;
+    user: {};
+  };
+  status: {};
 }
 export default new Vuex.Store({
   state: {

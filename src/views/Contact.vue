@@ -42,13 +42,12 @@ import Login from './Login.vue';
 
 @Component
 export default class Contact extends Login {
-    private email = '';
 
     private message = '';
 
     private responseMessage = '';
 
-    private async sendEmail(): void {
+    private async sendEmail(): Promise<void> {
 
       const payload: {} = {
         email: this.email,

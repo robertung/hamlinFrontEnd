@@ -32,7 +32,7 @@
               <li v-if="!loggedIn"><router-link @click.native="navHandler()" :to="{ path: '/register' }">Register</router-link></li>
               <li v-if="!loggedIn"><router-link @click.native="navHandler()" :to="{ path: '/login' }">Login</router-link></li>
               <li v-if="loggedIn"><router-link @click.native="navHandler()" :to="{ path: '/profile' }">Upload Pumpkins</router-link></li>
-              <li v-if="loggedIn"><a href="#" @click.native="navHandler()" @click="logOut()">Logout</a></li>
+              <li v-if="loggedIn"><a href="#" @click="logOut();navHandler()">Logout</a></li>
           </ul>
         </div>
     </div>
@@ -59,7 +59,6 @@ export default class Nav extends Vue {
   }
 
   private navHandler(): void {
-    console.log('!!!!');
     this.showMobileNav = !this.showMobileNav;
   }
 
