@@ -1,5 +1,6 @@
 <template>
-    <div class="nav-view">
+  <div class="nav--bar">
+    <div class="nav-view desktop">
         <div class="container">
           <ul class="header-nav">
               <li><router-link :to="{ path: '/' }">Home</router-link></li>
@@ -14,12 +15,36 @@
           </ul>
         </div>
     </div>
+    <div class="nav-icon">
+      <b-icon @click="navHandler()" class="border rounded p-2" icon="three-dots" aria-hidden="true" />
+    </div>
+    <div class="nav-view mobile" v-show="showMobileNav">
+        <div class="close-icon" @click="navHandler()">
+            <b-icon icon="x-circle-fill" aria-hidden="true" />
+        </div>
+        <div class="container">
+          <ul class="header-nav">
+              <li><router-link @click.native="navHandler()" :to="{ path: '/' }">Home</router-link></li>
+              <li><router-link @click.native="navHandler()" :to="{ path: '/vote' }">Vote</router-link></li>
+              <li><router-link @click.native="navHandler()" :to="{ path: '/sponsors' }">Sponsors</router-link></li>
+              <li><router-link @click.native="navHandler()" :to="{ path: '/raffle' }">Raffle</router-link></li>
+              <li><router-link @click.native="navHandler()" :to="{ path: '/contact' }">Contact</router-link></li>
+              <li v-if="!loggedIn"><router-link @click.native="navHandler()" :to="{ path: '/register' }">Register</router-link></li>
+              <li v-if="!loggedIn"><router-link @click.native="navHandler()" :to="{ path: '/login' }">Login</router-link></li>
+              <li v-if="loggedIn"><router-link @click.native="navHandler()" :to="{ path: '/profile' }">Upload Pumpkins</router-link></li>
+              <li v-if="loggedIn"><a href="#" @click.native="navHandler()" @click="logOut()">Logout</a></li>
+          </ul>
+        </div>
+    </div>
+  </div>
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Nav extends Vue {
+
+  showMobileNav = false;
 
   private get loggedIn(): boolean {
     return this.$store.getters.loggedIn;
@@ -31,6 +56,11 @@ export default class Nav extends Vue {
 
   private get user() {
     return this.$store.getters.user;
+  }
+
+  private navHandler(): void {
+    console.log('!!!!');
+    this.showMobileNav = !this.showMobileNav;
   }
 
   private async logOut(): Promise<void> {
@@ -47,7 +77,7 @@ export default class Nav extends Vue {
 
 <style lang="scss">
 .nav-view {
-  padding: 30px 0 20px;
+  padding: 20px 0 20px;
   border-bottom: solid 1px #fa9b03;
   background: #000;
 

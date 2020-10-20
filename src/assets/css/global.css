@@ -95,10 +95,6 @@ body {
   animation: move-clouds-back 200s linear infinite;
 }
 
-h1, h2, h3, h4, h5, p, span {
-    /* color: #fff; */
-}
-
 .modal-help {
     background-color: rgba(0,0,0,0.5);
     position: absolute;
@@ -132,4 +128,105 @@ h1, h2, h3, h4, h5, p, span {
     width: 150px;
     height: 150px;
     border-radius: 100%;
+  }
+
+  .mobile,
+  .nav-icon {
+    display: none;
+  }
+  @media only screen and (max-width: 780px) {
+    body {
+      background: midnightblue;
+    }
+
+    .home-svg,
+    .clouds {
+        display: none;
+    }
+
+    .halloween-message {
+        margin-top: 25px !important;
+    }
+
+    .nav-view .header-nav {
+        display: block;
+    }
+
+    .halloween-message h1, .halloween-message h2 {
+        font-size: 47px;
+    }
+
+    .nav-view {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+    }
+
+    .desktop {
+        display: none;
+    }
+    .mobile {
+        display: block;
+    }
+
+    .view h1 {
+        font-size: 20px !important;
+        margin: 15px 0 !important;
+    }
+
+    .profile .tab-title {
+        margin: 5px 0 20px !important;
+    }
+
+    .halloween-title h1, .halloween-title h2 {
+        font-size: 68px !important;
+    }
+
+    #app {
+        margin-bottom: 20px !important;
+    }
+
+    .nav-icon {
+        display: block;
+        font-size: 34px;
+        color: #fff;
+        width: 100%;
+    }
+
+    .b-icon.bi {
+        float: right;
+    }
+
+    .close-icon {
+        position: absolute;
+        right: 8px;
+        top: 7px;
+    }
+    .close-icon svg {
+        font-size: 32px;
+        color: #fa9b03;
+    }
+
+    .container {
+        position: static !important;
+        z-index: 0 !important;
+        overflow: hidden;
+    }
+
+    .nav--bar {
+        background: #000;
+        width: 100%;
+        display: flex;
+        padding: 10px;
+    }
+
+    .login-view .login-form {
+        margin: 0;
+    }
+
+    .image-container img {
+        max-width: 100% !important;
+    }
   }
