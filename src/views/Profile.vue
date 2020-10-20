@@ -146,6 +146,7 @@ export default class Profile extends Vue {
   }
 
   private selectFile(): void {
+    // @ts-ignore
     const { files } = this.$refs.files;
     this.uploadFiles = [...this.files, ...files];
 
@@ -177,6 +178,7 @@ export default class Profile extends Vue {
 
   private async sendFile(): Promise<void> {
     const formData = new FormData();
+    // @ts-ignore
     this.uploadFiles.userId = this.getUserId;
     _.forEach(this.uploadFiles, (file) => {
       if (this.validateFile(file) === '') {
