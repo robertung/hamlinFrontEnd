@@ -1,8 +1,8 @@
 <template>
     <div class="login-view">
-      <h1>Hamlin Halloween</h1>
+      <h1>Hamlin Halloween Raffle</h1>
       <b-form class="login-form">
-        <h4>Contact Us</h4>
+        <h4>Sign up for a raffle</h4>
         <b-form-group
           id="email"
           label="Email Address"
@@ -18,19 +18,32 @@
         </b-form-group>
 
       <b-form-group
-          id="message"
-          label-for="message"
-          label="Message"
+          id="name"
+          label-for="name"
+          label="Name"
         >
           <b-form-input
-            id="message"
-            v-model="message"
+            id="name"
+            v-model="name"
             type="text"
             required
-            placeholder="Enter Message"
+            placeholder="Enter Name"
           />
-        </b-form-group>
-        <b-button type="button" variant="primary" @click="sendEmail()">Send Message</b-button>
+      </b-form-group>
+      <b-form-group
+          id="telephone"
+          label-for="telephone"
+          label="Telephone"
+        >
+          <b-form-input
+            id="telephone"
+            v-model="telephone"
+            type="tel"
+            required
+            placeholder="Enter Telephone"
+          />
+      </b-form-group>
+        <b-button type="button" variant="primary" @click="sendRaffle()">Save Raffle Information</b-button>
         <p>{{ responseMessage }}</p>
       </b-form>
     </div>
@@ -43,20 +56,26 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class Contact extends Vue {
     private email = '';
 
-    private message = '';
+    private name = '';
+
+    private telephone = ''
 
     private responseMessage = '';
 
-    private async sendEmail(): void {
+    private async sendRaffle(): void {
 
       const payload: {} = {
         email: this.email,
-        message: this.message,
+        name: this.name,
+        phone_number: this.telephone
       };
 
-      await this.$store.dispatch('sendMessage', payload);
+      await this.$store.dispatch('sendRaffle', payload);
 
-      this.responseMessage = 'Message sent.';
+      this.responseMessage = 'Raffle Saved.';
+      this.email = '';
+      this.name = '';
+      this.telephone = '';
     }
 }
 </script>

@@ -34,7 +34,7 @@ export default new Vuex.Store({
     },
     getGaller(state) {
       return state.gallery;
-    }
+    },
   },
   mutations: {
     SET_TOKEN: (state, data) => {
@@ -145,6 +145,14 @@ export default new Vuex.Store({
       } else {
           return console.log('FAILED');
       }
+    },
+    sendMessage: ({ commit }, payload) => {
+      return apiPost('message', payload)
+        .catch((error) => console.log(`message error ${error}`));
+    },
+    sendRaffle: ({ commit }, payload) => {
+      return apiPost('raffleregister', payload)
+        .catch((error) => console.log(`raffle message error ${error}`));
     }
   },
   modules: {

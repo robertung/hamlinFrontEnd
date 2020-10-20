@@ -7,7 +7,7 @@
        </div>
       <b-row v-for="(image, index) in userById" :key="index">
         <b-col class="images">
-          <img style="max-width: 100%" :src="`${apiPath}/${image.image_name}`" />
+          <img style="max-width: 100%" :src="image.image_path" />
         </b-col>
       </b-row>
     </b-container>
@@ -26,8 +26,6 @@ import Modal from './Modal.vue';
 export default class VoteById extends Vue {
 
   private userId = this.$route.params.id;
-
-  private apiPath = process.env.VUE_APP_API_DOMAIN;
 
   private message = 'Vote for this Pumpkin';
 

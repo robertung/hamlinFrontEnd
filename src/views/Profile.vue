@@ -3,11 +3,13 @@
     <h1>Hamlin Halloween Pumpkin Upload</h1>
     <b-tabs>
         <b-tab title="Upload Pumpkins">
+          <h1 class="tab-title">{{ imageCountMessage }}</h1>
+          <p>PNG and JPG format only</p>
           <form
               @submit.prevent="sendFile"
               enctype="multipart/form-data"
             >
-              <div class="field">
+              <div class="field" v-if="showUpload">
                 <div class="file is-boxed is-primary">
                   <label class="file-label">
                       <input
@@ -49,12 +51,15 @@
                 </div>
               </template>
               <div class="field">
-                <b-button
-                  type="submit"
-                  variant="primary"
-                >
-                  Upload
-                </b-button>
+                <template v-if="!maxImageButton">
+                  <b-button
+                    type="submit"
+                    variant="primary"
+                  >
+                    Upload Images
+                  </b-button>
+                </template>
+                <p v-else>You have to many images delete some to upload.</p>
                 <p>{{ this.message }}</p>
               </div>
               </form>
@@ -75,7 +80,7 @@
                   class="image-container"
                   :key="index"
                 >
-                <img :src="`http://localhost:2121/${image.image_name}`" />
+                <img :src="image.image_path" />
                 <div
                   class="delete"
                   @click.prevent="userImages.splice(index, 1);deleteImage(image.id);"><b-icon icon="x-circle-fill" />
@@ -108,6 +113,26 @@ export default class Profile extends Vue {
 
   private deleteImageId = [];
 
+  private showUpload = true;
+
+  private imageMaxCount = 6;
+
+  private get maxImageButton(): boolean {
+    if (this.uploadFiles.length >= (this.imageMaxCount + 1)) {
+      return true;
+    }
+    return false;
+  }
+  get imageCountMessage() {
+    const count = this.imageMaxCount;
+    if (this.uploadFiles.length >= count) {
+      this.showUpload = false;
+      return `You cannot add anymore image, ${count} is the max.`;
+    }
+    this.showUpload = true;
+    return `You can upload up to${this.uploadFiles.length - count} ${this.uploadFiles.length === 5 ? 'image' : 'images'}.`;
+  }
+
   private get user() {
     return this.$store.getters.user;
   }
@@ -138,14 +163,13 @@ export default class Profile extends Vue {
 
   private validateFile(file): String {
     const MAX_SIZE = 20000000;
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-
+    const allowedTypes = ['image/jpeg', 'image/png'];
     if (file.size > MAX_SIZE) {
       return `max size: ${MAX_SIZE / 100}kb`;
     }
 
     if (!allowedTypes.includes(file.type)) {
-      return 'Please use only .jpg, .png or .gif file types';
+      return 'Please use only .jpg or .png file types';
     }
 
     return '';
@@ -160,6 +184,7 @@ export default class Profile extends Vue {
       }
     });
     try {
+
       await this.$store.dispatch('upload', formData);
       this.message = 'Files uploaded';
       this.files = [];
@@ -204,6 +229,10 @@ export default class Profile extends Vue {
 
     h1 {
       color: #fa9b03;
+    }
+    .tab-title {
+      color: #000;
+      margin: 20px 0 25px;
     }
   }
 
