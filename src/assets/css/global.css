@@ -213,6 +213,7 @@ body {
         position: static !important;
         z-index: 0 !important;
         overflow: hidden;
+        width: 100%;
     }
 
     .nav--bar {
