@@ -34,9 +34,18 @@ const routes: Array<RouteConfig> = [
   {
     path: '/sponsors',
     name: 'Sponsors',
-    component: () => import('../views/Sponsers.vue'),
+    component: () => import('../views/Sponsors.vue'),
     meta: {
       title: document.title = `${pageTitle} : Sponsors`,
+    },
+  },
+  {
+    path: '/raffle',
+    name: 'Raffle',
+    component: () => import('../views/Raffle.vue'),
+    meta: {
+      title: `${pageTitle} : Raffle`,
+      doc: document.title = 'ROB',
     },
   },
   {

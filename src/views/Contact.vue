@@ -30,10 +30,8 @@
             placeholder="Enter Message"
           />
         </b-form-group>
-        <b-button type="button" variant="primary" @click="sendEmail()">Send Email</b-button>
-        <div class="error" v-if="errorMessage">
-          <p>Email or Password is incorrect</p>
-        </div>
+        <b-button type="button" variant="primary" @click="sendEmail()">Send Message</b-button>
+        <p>{{ responseMessage }}</p>
       </b-form>
     </div>
 </template>
@@ -45,26 +43,20 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class Contact extends Vue {
     private email = '';
 
-    private password = '';
+    private message = '';
 
-    private errorMessage = false;
+    private responseMessage = '';
 
-    private sendEmail(): void {
-      this.errorMessage = false;
+    private async sendEmail(): void {
+
       const payload: {} = {
         email: this.email,
-        password: this.password,
+        message: this.message,
       };
 
-      this.$store.dispatch('login', payload)
-        .then((response) => {
-          if (response.status === 401) {
-            this.errorMessage = true;
-          }
-          if (response.status === 200) {
-            this.$router.push({ name: 'Profile' });
-          }
-        });
+      await this.$store.dispatch('sendMessage', payload);
+
+      this.responseMessage = 'Message sent.';
     }
 }
 </script>

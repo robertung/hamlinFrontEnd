@@ -5,6 +5,7 @@
               <li><router-link :to="{ path: '/' }">Home</router-link></li>
               <li><router-link :to="{ path: '/vote' }">Vote</router-link></li>
               <li><router-link :to="{ path: '/sponsors' }">Sponsors</router-link></li>
+              <li><router-link :to="{ path: '/raffle' }">Raffle</router-link></li>
               <li><router-link :to="{ path: '/contact' }">Contact</router-link></li>
               <li v-if="!loggedIn"><router-link :to="{ path: '/register' }">Register</router-link></li>
               <li v-if="!loggedIn"><router-link :to="{ path: '/login' }">Login</router-link></li>
@@ -46,7 +47,7 @@ export default class Nav extends Vue {
 
 <style lang="scss">
 .nav-view {
-  padding: 20px 0;
+  padding: 30px 0 20px;
   border-bottom: solid 1px #fa9b03;
   background: #000;
 
@@ -60,11 +61,15 @@ export default class Nav extends Vue {
   a {
     font-weight: bold;
     color: #fa9b03 ;
-    font-size: 24px;
+    font-size: 22px;
     text-decoration: none;
     &.router-link-exact-active {
-      color: #D16805;
+      color: #0056b3;
     }
   }
+  a:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
 }
 </style>

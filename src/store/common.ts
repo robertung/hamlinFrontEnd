@@ -1,13 +1,10 @@
 import axios from 'axios';
-import * as localForage from 'localforage';
 
 const apiDomain = process.env.VUE_APP_API_DOMAIN;
 const access_token = localStorage.getItem('access_token');
 
 export function apiPut(url: string, data: {}) {
   return new Promise((resolve, reject) => {
-    // localForage.getItem('access_token').then((userTokens: any) => {
-      // const access_token = localStorage.getItem('access_token');
       const dataQS = JSON.stringify(data);
       axios({
         method: 'PUT',
