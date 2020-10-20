@@ -2,7 +2,7 @@
   <div class="profile view">
     <h1>Hamlin Halloween Pumpkin Upload</h1>
     <b-tabs>
-        <b-tab title="Upload Pumpkins">
+        <b-tab title="Uploads">
           <h1 class="tab-title">{{ imageCountMessage }}</h1>
           <p>PNG and JPG format only</p>
           <form
@@ -65,7 +65,7 @@
               </form>
         </b-tab>
 
-        <b-tab title="Your Pumpkin Images" lazy>
+        <b-tab title="Your Images" lazy>
               <b-button
                 type="submit"
                 variant="primary"

@@ -1,5 +1,5 @@
 <template>
-    <div class="login-view">
+    <div class="login-view view">
       <h1>Hamlin Halloween</h1>
       <b-form class="login-form">
         <h4>Login</h4>
@@ -49,17 +49,17 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Login extends Vue {
-    private email = '';
+    public email = '';
 
-    private password = '';
+    public password = '';
 
-    private errorMessage = false;
+    public errorMessage = false;
 
-    private get buttonDisabled(): boolean {
+    public get buttonDisabled(): boolean {
       return this.email.length > 0 && this.password.length > 0;
     }
 
-    private login(): void {
+    public login(): void {
       this.errorMessage = false;
       const payload: {} = {
         email: this.email,

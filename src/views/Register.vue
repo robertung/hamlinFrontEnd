@@ -1,5 +1,5 @@
 <template>
-    <div class="register-view view">
+    <div class="login-view register-view view">
       <h1>Hamlin Halloween</h1>
       <b-form class="login-form">
         <h4>Register Account</h4>
@@ -89,8 +89,10 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
+import Login from './Login.vue';
+
 @Component
-export default class Login extends Vue {
+export default class Register extends Login {
 
     private name = '';
 
@@ -121,7 +123,7 @@ export default class Login extends Vue {
       return false;
     }
 
-    private register(): void {
+    private async register(): Promise<void> {
       this.errorMessage = false;
 
       const payload: {} = {
@@ -138,6 +140,11 @@ export default class Login extends Vue {
             this.errorMessage = true;
           }
           if (response.status === 200) {
+            const newPayload = {
+              email: this.email,
+              password: this.password,
+            };
+            this.$store.dispatch('login', newPayload);
             this.$router.push({ name: 'Profile' });
           }
         });
@@ -149,23 +156,6 @@ export default class Login extends Vue {
   .register-view {
 
     .login-form {
-        max-width: 400px;
-        margin: 30px auto 0;
-        padding: 20px;
-        background: #fa9b03;
-        border-radius: 5px;
-        box-shadow: 0 1px 4px 0 rgba(0,0,0,.28);
-        border-top: 10px solid;
-        border-color:#D16805;
-
-        .form-group {
-          margin-bottom: 2rem;
-        }
-
-        input {
-            font-family: 'Roboto', sans-serif;
-        }
-
         .error {
             text-align: center;
             margin-top: 35px;
