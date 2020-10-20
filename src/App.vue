@@ -27,8 +27,6 @@ export default {
   },
 };
 </script>
-<style src="./assets/css/normalize.css"></style>
-<style src="./assets/css/global.css"></style>
 <style lang="scss">
 .container {
   margin: 0 auto;
@@ -49,3 +47,4 @@ export default {
   }
 }
 </style>
+<style src="./assets/css/global.css"></style>
