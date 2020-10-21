@@ -94,9 +94,6 @@ export default new Vuex.Store({
     },
     upload: ({ state }, formData) => {
       return apiPostImage('upload', formData)
-        .then((response) => {
-          console.log('upload response', response);
-        })
         .catch((error) => error);
     },
     userImage: ({ state, commit }, payload) => {
@@ -115,16 +112,10 @@ export default new Vuex.Store({
     },
     deleteImages: ({ state, commit }, payload) => {
       return apiDelete('removeimages', payload)
-        .then((response: Response) => {
-          console.log('delete response', response);
-        })
         .catch((error) => error);
     },
     logout: ({ state }, payload) => {
       return apiDelete('logout', payload)
-        .then((response: Response) => {
-          console.log('upload response', response);
-        })
         .catch((error) => console.log(`logout error ${error}`));
     },
     vote: ({state}, payload) => {

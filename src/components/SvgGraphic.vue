@@ -26,7 +26,6 @@ export default class SvgGraphic extends Vue {
     }
 
     private get svgSize(): string {
-      console.log(this.iconName, this.width, ';;;');
       return `width:${this.width}px;height:${this.height}px`;
     }
 
