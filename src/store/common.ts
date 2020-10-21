@@ -27,7 +27,6 @@ export function apiPut(url: string, data: {}) {
 export function apiPost(url: string, data: {}) {
   return new Promise((resolve, reject) => {
       const dataQS = JSON.stringify(data);
-      // console.log(dataQS, 'dataQS');
       axios({
         method: 'POST',
         url: `${apiDomain}/${url}`,
@@ -72,7 +71,6 @@ export function apiDelete(url: string, data: {}) {
   return new Promise((resolve, reject) => {
     // localForage.getItem('access_token').then((userTokens: any) => {
       const dataQS = JSON.stringify(data);
-      console.log(dataQS, 'dataQS');
       axios({
         method: 'DELETE',
         url: `${apiDomain}/${url}`,
@@ -94,7 +92,6 @@ export function apiDelete(url: string, data: {}) {
 
 export function apiGetNone(url: string, params: {}) {
   return new Promise((resolve, reject) => {
-    console.log(apiDomain, 'env');
     const dataQS = JSON.stringify(params);
     axios({
       method: 'GET',

@@ -2,12 +2,13 @@
   <div class="profile view">
     <h1>Hamlin Halloween Pumpkin Upload</h1>
     <b-tabs>
-        <b-tab title="Uploads">
+        <b-tab class="uploads-tab" title="Uploads">
           <h1 class="tab-title">{{ imageCountMessage }}</h1>
           <p>PNG and JPG format only max size 1000kb or 1mb</p>
           <form
               @submit.prevent="sendFile"
               enctype="multipart/form-data"
+              class="uploads-form"
             >
               <div class="field" v-if="showUpload">
                 <div class="file is-boxed is-primary">
@@ -17,8 +18,15 @@
                         type="file"
                         class="file-input"
                         ref="files"
+                        hidden
                         @change="selectFile"
                       />
+                      <b-button
+                        class="input-upload-button"
+                        variant="primary"
+                        @click="chooseFile()">
+                        <b-icon class="camera-icon" icon="camera-fill" aria-hidden="true"/>
+                      </b-button>
                   </label>
                 </div>
               </div>
@@ -58,6 +66,7 @@
                     class="image-button upload-button"
                     type="submit"
                     variant="primary"
+                    :disabled="disableUploadButton"
                   >
                     Upload Images
                   </b-button>
@@ -75,9 +84,10 @@
         </b-tab>
 
         <b-tab title="Your Images" lazy>
+          <div class="your-images-form">
               <b-button
                 v-if="!deletingUploading"
-                class="image-button"
+                class="image-button delete-button"
                 type="submit"
                 variant="primary"
                 :disabled="!deleteImageId.length > 0"
@@ -103,6 +113,7 @@
                 </div>
                 </div>
             </template>
+          </div>
         </b-tab>
 
       </b-tabs>
@@ -136,6 +147,19 @@ export default class Profile extends Vue {
   private uploading = false;
 
   private deletingUploading = false;
+
+  private imagesToLarge = false;
+
+  private chooseFile(): void {
+    this.$refs['files'].click();
+  }
+
+  private get disableUploadButton(): boolean {
+    if (this.uploadFiles.length > 0) {
+      return false;
+    }
+    return true;
+  }
 
   private get maxImageButton(): boolean {
     if (this.uploadFiles.length >= (this.imageMaxCount + 1)) {
@@ -183,18 +207,15 @@ export default class Profile extends Vue {
   }
 
   private validateFile(file): String {
-    console.log(file.size,'FILE');
-    // 762907
     const MAX_SIZE = 1000000;
     const allowedTypes = ['image/jpeg', 'image/png'];
     if (file.size > MAX_SIZE) {
-      return `max size: ${MAX_SIZE / 1000}kb`;
+      return `max size is ${MAX_SIZE / 1000}kb... please use a smaller size.`;
     }
 
     if (!allowedTypes.includes(file.type)) {
-      return 'Please use only .jpg or .png file types';
+      return 'Please use only .jpg or .png file types.';
     }
-
     return '';
   }
 
@@ -221,7 +242,6 @@ export default class Profile extends Vue {
       // @ts-ignore
       input.type = 'file';
     } catch (err) {
-      console.log(err, 'err');
       this.message = 'Error';
     }
   }
@@ -318,5 +338,32 @@ export default class Profile extends Vue {
       justify-content: center;
       cursor: pointer;
     }
+  }
+  .uploads-form {
+    display: flex !important;
+    flex-direction: column !important;;
+    align-items: center !important;
+    text-align: center;
+  }
+  .your-images-form {
+    flex-direction: column !important;;
+    align-items: center !important;
+    text-align: center;
+    display: flex;
+  }
+  .tab-pane {
+    text-align: center;
+  }
+
+  .bi-camera-fill {
+    font-size: 100px !important;
+  }
+
+  .input-upload-button {
+    margin-bottom: 20px;
+  }
+
+  .delete-button {
+    margin-bottom: 20px;
   }
 </style>
