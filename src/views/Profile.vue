@@ -33,6 +33,7 @@
                     :src="file.url"
                   />
                   <div
+                    v-if="!uploading"
                     :id="`tooltip-target-${index}`"
                     class="delete"
                     @click.prevent="
@@ -53,11 +54,19 @@
               <div class="field">
                 <template v-if="!maxImageButton">
                   <b-button
+                    v-if="!uploading"
+                    class="image-button upload-button"
                     type="submit"
                     variant="primary"
                   >
                     Upload Images
                   </b-button>
+                  <b-spinner
+                    v-if="uploading"
+                    class="upload-button"
+                    style="width: 3rem; height: 3rem;"
+                    label="Large Spinner"
+                  />
                 </template>
                 <p v-else>You have to many images delete some to upload.</p>
                 <p>{{ this.message }}</p>
@@ -67,6 +76,8 @@
 
         <b-tab title="Your Images" lazy>
               <b-button
+                v-if="!deletingUploading"
+                class="image-button"
                 type="submit"
                 variant="primary"
                 :disabled="!deleteImageId.length > 0"
@@ -74,7 +85,12 @@
               >
               Delete Selected Images {{ deleteImageId.length || '' }}
               </b-button>
-
+              <b-spinner
+                 v-if="deletingUploading"
+                class="upload-button"
+                style="width: 3rem; height: 3rem;"
+                label="Large Spinner"
+              />
             <template v-for="(image, index) in userImages">
                 <div
                   class="image-container"
@@ -116,6 +132,10 @@ export default class Profile extends Vue {
   private showUpload = true;
 
   private imageMaxCount = 6;
+
+  private uploading = false;
+
+  private deletingUploading = false;
 
   private get maxImageButton(): boolean {
     if (this.uploadFiles.length >= (this.imageMaxCount + 1)) {
@@ -177,6 +197,7 @@ export default class Profile extends Vue {
   }
 
   private async sendFile(): Promise<void> {
+    this.uploading = true;
     const formData = new FormData();
     // @ts-ignore
     this.uploadFiles.userId = this.getUserId;
@@ -186,12 +207,17 @@ export default class Profile extends Vue {
       }
     });
     try {
-
       await this.$store.dispatch('upload', formData);
       this.message = 'Files uploaded';
       this.files = [];
       this.uploadFiles = [];
       this.grabTokenAndUserData();
+      this.uploading = false;
+      const input = this.$refs.files;
+      // @ts-ignore
+      input.type = 'text';
+      // @ts-ignore
+      input.type = 'file';
     } catch (err) {
       console.log(err, 'err');
       this.message = 'Error';
@@ -203,12 +229,14 @@ export default class Profile extends Vue {
   }
 
   async saveDeletedImages(): Promise<void> {
+    this.deletingUploading = true;
     const payload = {
       imageIds: this.deleteImageId,
       userId: this.getUserId,
     };
     await this.$store.dispatch('deleteImages', payload);
     this.deleteImageId = [];
+    this.deletingUploading = false;
   }
 
   private grabTokenAndUserData(): void {
@@ -235,6 +263,16 @@ export default class Profile extends Vue {
     .tab-title {
       color: #000;
       margin: 20px 0 25px;
+    }
+
+    .image-button {
+      height: 100px;
+      width: 100px;
+      border-radius: 100%;
+    }
+
+    .upload-button {
+      margin-top: 20px;
     }
   }
 

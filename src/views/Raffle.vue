@@ -2,7 +2,7 @@
     <div class="login-view view">
       <h1>Hamlin Halloween Raffle</h1>
       <b-form class="login-form">
-        <h4>Sign up for a raffle</h4>
+        <h4>Sign up for the raffle</h4>
         <b-form-group
           id="email"
           label="Email Address"

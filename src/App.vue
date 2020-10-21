@@ -5,7 +5,7 @@
       <div class="container">
         <router-view/>
       </div>
-      <div class="home-svg">
+      <div class="home-svg" v-if="currentRouteName === 'Home'">
         <svg-graphic
           icon-name="home-two"
           width="900"
@@ -25,6 +25,11 @@ export default {
     NavList,
     SvgGraphic,
   },
+  computed: {
+    currentRouteName() {
+      return this.$route.name;
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -38,6 +43,7 @@ export default {
   position: absolute;
   right: 0;
   bottom: -10px;
+  z-index: 0;
 }
 .halloween-message {
 
