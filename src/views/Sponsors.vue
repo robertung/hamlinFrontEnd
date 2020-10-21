@@ -7,7 +7,7 @@
           <b-img
               class="image"
               fluid
-              src="https://hamlinhalloween.fra1.digitaloceanspaces.com/sponsors/The%20Nook.png"
+              src="https://hamlinhalloween.fra1.digitaloceanspaces.com/sponsors/Logo%20%28White%29.png"
             />
         </b-col>
         <b-col>
@@ -91,6 +91,18 @@
               src="https://hamlinhalloween.fra1.digitaloceanspaces.com/sponsors/ralphs.png"
             />
         </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <b-img
+              class="image"
+              fluid
+              src="https://hamlinhalloween.fra1.digitaloceanspaces.com/sponsors/The%20Nook.png"
+            />
+        </b-col>
+        <b-col />
+        <b-col />
+        <b-col />
       </b-row>
     </b-container>
   </div>
