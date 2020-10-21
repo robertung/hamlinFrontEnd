@@ -5,7 +5,7 @@
       <div class="container">
         <router-view/>
       </div>
-      <div class="home-svg" v-if="currentRouteName === 'Home'">
+      <div class="home-svg" v-if="showHouse">
         <svg-graphic
           icon-name="home-two"
           width="900"
@@ -26,8 +26,8 @@ export default {
     SvgGraphic,
   },
   computed: {
-    currentRouteName() {
-      return this.$route.name;
+    showHouse() {
+      return this.$route.name !== 'Vote';
     },
   },
 };
