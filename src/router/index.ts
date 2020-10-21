@@ -10,7 +10,7 @@ const routes: Array<RouteConfig> = [
     name: 'Login',
     component: () => import('../views/Login.vue'),
     meta: {
-      title: document.title = `${pageTitle} : Login`,
+      title: `${pageTitle} : Login`,
       requiresVisitor: true,
     },
   },
@@ -19,7 +19,7 @@ const routes: Array<RouteConfig> = [
     name: 'Register',
     component: () => import('../views/Register.vue'),
     meta: {
-      title: document.title = `${pageTitle} : Register`,
+      title: `${pageTitle} : Register`,
       requiresVisitor: true,
     },
   },
@@ -28,7 +28,7 @@ const routes: Array<RouteConfig> = [
     name: 'Home',
     component: () => import('../views/Home.vue'),
     meta: {
-      title: document.title = `${pageTitle} : Home : Pumpkin Contest`,
+      title: `${pageTitle} : Home : Pumpkin Contest`,
     },
   },
   {
@@ -36,7 +36,7 @@ const routes: Array<RouteConfig> = [
     name: 'Sponsors',
     component: () => import('../views/Sponsors.vue'),
     meta: {
-      title: document.title = `${pageTitle} : Sponsors`,
+      title: `${pageTitle} : Sponsors`,
     },
   },
   {
@@ -45,7 +45,6 @@ const routes: Array<RouteConfig> = [
     component: () => import('../views/Raffle.vue'),
     meta: {
       title: `${pageTitle} : Raffle`,
-      doc: document.title = 'ROB',
     },
   },
   {
@@ -53,7 +52,7 @@ const routes: Array<RouteConfig> = [
     name: 'Contact',
     component: () => import('../views/Contact.vue'),
     meta: {
-      title: document.title = `${pageTitle} : Contact`,
+      title: `${pageTitle} : Contact`,
     },
   },
   {
@@ -61,7 +60,7 @@ const routes: Array<RouteConfig> = [
     name: 'Vote',
     component: () => import('../views/Vote.vue'),
     meta: {
-      title: document.title = `${pageTitle} : Vote`,
+      title: `${pageTitle} : Vote`,
     },
   },
   {
@@ -69,7 +68,7 @@ const routes: Array<RouteConfig> = [
     name: 'Profile',
     component: () => import('../views/Profile.vue'),
     meta: {
-      title: document.title = `${pageTitle} : Profile : Upload Pumpkins`,
+      title: `${pageTitle} : Profile : Upload Pumpkins`,
       requiresAuth: true,
     },
   },
@@ -78,7 +77,7 @@ const routes: Array<RouteConfig> = [
     name: 'VoterById',
     component: () => import('../views/VoteById.vue'),
     meta: {
-      title: `${pageTitle} : Vote for`,
+      title: `${pageTitle} : Vote for this Pumpkin`,
     },
   }
 ];

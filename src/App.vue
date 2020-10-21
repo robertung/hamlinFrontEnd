@@ -30,6 +30,11 @@ export default {
       return this.$route.name !== 'Vote';
     },
   },
+  watch: {
+    '$route' (to, from) {
+      document.title = to.meta.title || 'Your Website'
+    }
+  },
 };
 </script>
 <style lang="scss">
