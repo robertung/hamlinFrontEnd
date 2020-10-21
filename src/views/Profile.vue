@@ -4,7 +4,7 @@
     <b-tabs>
         <b-tab title="Uploads">
           <h1 class="tab-title">{{ imageCountMessage }}</h1>
-          <p>PNG and JPG format only</p>
+          <p>PNG and JPG format only max size 1000kb or 1mb</p>
           <form
               @submit.prevent="sendFile"
               enctype="multipart/form-data"
@@ -183,10 +183,12 @@ export default class Profile extends Vue {
   }
 
   private validateFile(file): String {
-    const MAX_SIZE = 20000000;
+    console.log(file.size,'FILE');
+    // 762907
+    const MAX_SIZE = 1000000;
     const allowedTypes = ['image/jpeg', 'image/png'];
     if (file.size > MAX_SIZE) {
-      return `max size: ${MAX_SIZE / 100}kb`;
+      return `max size: ${MAX_SIZE / 1000}kb`;
     }
 
     if (!allowedTypes.includes(file.type)) {
