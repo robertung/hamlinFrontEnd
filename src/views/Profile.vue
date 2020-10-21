@@ -151,6 +151,7 @@ export default class Profile extends Vue {
   private imagesToLarge = false;
 
   private chooseFile(): void {
+    // @ts-ignore
     this.$refs['files'].click();
   }
 
