@@ -13,7 +13,7 @@
             v-model="email"
             type="email"
             required
-            placeholder="Enter email"
+            placeholder="Enter Email"
           />
         </b-form-group>
 
@@ -43,7 +43,14 @@
             placeholder="Enter Telephone"
           />
       </b-form-group>
-        <b-button type="button" variant="primary" @click="sendRaffle()">Save Raffle Information</b-button>
+        <b-button
+          :disabled="!disableButton"
+          :variant="disableButton ? 'primary': 'secondary'"
+          @click="sendRaffle()"
+          type="button"
+          >
+          Send Raffle Information
+      </b-button>
         <p>{{ responseMessage }}</p>
       </b-form>
     </div>
@@ -56,14 +63,18 @@ import Login from './Login.vue';
 
 @Component
 export default class Raffle extends Login {
-    
-    // private email = '';
 
     private name = '';
 
     private telephone = ''
 
     private responseMessage = '';
+
+    private get disableButton(): boolean {
+      return this.email.length > 0
+        && this.name.length > 0
+        && this.telephone.length > 0;
+    }
 
     private async sendRaffle(): Promise<void> {
 

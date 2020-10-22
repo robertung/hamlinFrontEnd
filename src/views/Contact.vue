@@ -30,7 +30,12 @@
             placeholder="Enter Message"
           />
         </b-form-group>
-        <b-button type="button" variant="primary" @click="sendEmail()">Send Message</b-button>
+        <b-button 
+          :disabled="!disableButton"
+          :variant="disableButton ? 'primary': 'secondary'"
+          @click="sendEmail()"
+          type="button"
+          >Send Message</b-button>
         <p>{{ responseMessage }}</p>
       </b-form>
     </div>
@@ -46,6 +51,11 @@ export default class Contact extends Login {
     private message = '';
 
     private responseMessage = '';
+
+    private get disableButton(): boolean {
+      return this.email.length > 0
+        && this.message.length > 0;
+    }
 
     private async sendEmail(): Promise<void> {
 
