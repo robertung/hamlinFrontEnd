@@ -31,10 +31,11 @@
           />
         </b-form-group>
         <b-button
-          type="button"
-          variant="primary"
+          :variant="buttonDisabled ? 'primary': 'secondary'"
           :disabled="!buttonDisabled"
-          @click="login()">
+          @click="login()"
+          type="button"
+          >
             Submit
         </b-button>
         <div class="error" v-if="errorMessage">

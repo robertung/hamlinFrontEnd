@@ -71,9 +71,10 @@
         </b-form-group>
         <b-button
           :disabled="!buttonDisabled"
+          :variant="buttonDisabled ? 'primary': 'secondary'"
+          @click="register()"
           type="button"
-          variant="primary"
-          @click="register()">
+          >
           Register
         </b-button>
         <div class="error" v-if="errorMessage">
