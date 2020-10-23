@@ -1,16 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" class="bg-container">
     <div class="clouds" />
       <nav-list />
       <div class="container">
         <router-view/>
-      </div>
-      <div class="home-svg" v-if="showHouse">
-        <svg-graphic
-          icon-name="home-two"
-          width="900"
-          height="auto"
-        />
       </div>
   </div>
 </template>

@@ -46,7 +46,7 @@ export default class HomeView extends Vue {
 }
 .halloween-message {
   color: #fa9b03;
-  margin-top: 150px;
+  margin-top: 100px;
 }
 .pumpkin-wrapper {
   position: fixed;

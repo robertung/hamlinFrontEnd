@@ -99,6 +99,7 @@ export default class Login extends Vue {
         box-shadow: 0 1px 4px 0 rgba(0,0,0,.28);
         border-top: 10px solid;
         border-color:#D16805;
+        margin-bottom: 20px;
 
         .form-group {
           margin-bottom: 2rem;
