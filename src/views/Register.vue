@@ -70,6 +70,7 @@
           />
         </b-form-group>
         <b-button
+          v-if="!uploading"
           :disabled="!buttonDisabled"
           :variant="buttonDisabled ? 'primary': 'secondary'"
           @click="register()"
@@ -77,6 +78,12 @@
           >
           Register
         </b-button>
+        <b-spinner
+          v-if="uploading"
+          class="upload-button"
+          style="width: 3rem; height: 3rem;"
+          label="Large Spinner"
+        />
         <div class="error" v-if="errorMessage">
           <p>Email is already being used</p>
         </div>
@@ -100,6 +107,8 @@ export default class Register extends Login {
     private houseNickName = '';
 
     private passwordConfirmation = '';
+    
+    private uploading = false;
 
     public get buttonDisabled(): boolean {
       return this.name.length > 0
@@ -119,6 +128,7 @@ export default class Register extends Login {
     }
 
     private async register(): Promise<void> {
+      this.uploading = true;
       this.errorMessage = false;
 
       const payload: {} = {
@@ -131,6 +141,7 @@ export default class Register extends Login {
 
       this.$store.dispatch('register', payload)
         .then((response) => {
+          this.uploading = false;
           if (response.status === 401 || response.status === 400) {
             this.errorMessage = true;
           }
