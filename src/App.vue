@@ -30,12 +30,13 @@ export default {
   },
 };
 </script>
+<style src="./assets/css/global.css"></style>
 <style lang="scss">
 .container {
   margin: 0 auto;
   width: 1024px;
-  // position: relative;
-  // z-index: 9999
+  position: relative;
+  z-index: 500;
 }
 
 .halloween-message {
@@ -46,4 +47,3 @@ export default {
   }
 }
 </style>
-<style src="./assets/css/global.css"></style>
