@@ -59,8 +59,6 @@ export default class Contact extends Login {
 
     private responseMessage = '';
 
-    private uploading = false;
-
     private get disableButton(): boolean {
       return this.email.length > 0
         && this.message.length > 0;
