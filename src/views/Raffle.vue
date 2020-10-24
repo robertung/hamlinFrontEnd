@@ -77,8 +77,6 @@ export default class Raffle extends Login {
 
     private responseMessage = '';
 
-    private uploading = false;
-
     private get disableButton(): boolean {
       return this.email.length > 0
         && this.name.length > 0

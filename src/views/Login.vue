@@ -63,7 +63,7 @@ export default class Login extends Vue {
 
     public errorMessage = false;
 
-    private uploading = false;
+    public uploading = false;
 
     public get buttonDisabled(): boolean {
       return this.email.length > 0 && this.password.length > 0;

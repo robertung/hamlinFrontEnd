@@ -107,8 +107,6 @@ export default class Register extends Login {
     private houseNickName = '';
 
     private passwordConfirmation = '';
-    
-    private uploading = false;
 
     public get buttonDisabled(): boolean {
       return this.name.length > 0
