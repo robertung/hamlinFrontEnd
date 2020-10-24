@@ -34,15 +34,10 @@ export default {
 .container {
   margin: 0 auto;
   width: 1024px;
-  position: relative;
-  z-index: 9999
+  // position: relative;
+  // z-index: 9999
 }
-.home-svg {
-  position: absolute;
-  right: 0;
-  bottom: -10px;
-  z-index: 0;
-}
+
 .halloween-message {
 
   h1,
