@@ -8,6 +8,9 @@
         <h1>Pumpkin <br/> Contest</h1>
       </div>
       <h4>Deadline for entering is Halloween Eve</h4>
+      <b-button v-if="!loggedIn" variant="success" class="home-register-button">
+        <router-link :to="{ path: '/register' }">Register and Upload pumpkins click here</router-link>
+      </b-button>
   </div>
 </template>
 
@@ -17,6 +20,10 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class HomeView extends Vue {
   showTop = false
+
+  private get loggedIn(): boolean {
+    return this.$store.getters.loggedIn;
+  }
 }
 </script>
 
@@ -24,6 +31,14 @@ export default class HomeView extends Vue {
 .home-view {
   h4 {
     color: #fa9b03;
+  }
+
+  .home-register-button {
+
+    a {
+      text-decoration: none;
+      color: #000;
+    }
   }
 }
 .halloween-title {

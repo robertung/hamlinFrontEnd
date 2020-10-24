@@ -30,19 +30,15 @@ export default {
   },
 };
 </script>
+<style src="./assets/css/global.css"></style>
 <style lang="scss">
 .container {
   margin: 0 auto;
   width: 1024px;
   position: relative;
-  z-index: 9999
+  z-index: 500;
 }
-.home-svg {
-  position: absolute;
-  right: 0;
-  bottom: -10px;
-  z-index: 0;
-}
+
 .halloween-message {
 
   h1,
@@ -51,4 +47,3 @@ export default {
   }
 }
 </style>
-<style src="./assets/css/global.css"></style>

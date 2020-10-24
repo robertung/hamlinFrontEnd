@@ -1,6 +1,33 @@
 <template>
   <div class="profile view">
-    <h1>Hamlin Halloween Pumpkin Upload</h1>
+    <b-button class="instruction-button" variant="success" id="show-btn" @click="$bvModal.show('bv-modal-example')">How to upload instructions</b-button>
+
+  <b-modal id="bv-modal-example" hide-footer>
+    <template #modal-title>
+      How to upload images
+    </template>
+    <div class="d-block text-center">
+      <ol class="instruction-list">
+        <li>You can use your cell phone or desktop to upload pictures.</li>
+        <li>You can upload multiple pictures at a time.</li>
+        <li>Each individual image cannot exceed 1000mb in file size, jpg and png formats only. Please adjust accordingly.</li>
+        <li>Click or tap on the camera icon to start choosing images.</li>
+        <li>Once selected the images will display for preview. Please look for any warnings for file type and file size.</li>
+        <li>You can also delete images before uploading by clicking or tapping on the x button on the top right of the image.</li>
+        <li>Once an image or images are selected the upload button below will be active.</li>
+        <li>Click or tap on the upload images button.</li>
+        <li>That's it. You can go to the vote page to see your images.</li>
+        <li>If you you need to edit your images click or tap on the 'your images' tab.</li>
+        <li>Please click or tap on contact link in the navigation if you have any questions.</li>
+      </ol>
+      <!-- <p>You can use your cell phone or desktop to upload pictures. You can upload up to 6 max. The image size cannot exceed 1000mb so please adjust before upload.</p> -->
+    </div>
+    <b-button class="mt-3" block @click="$bvModal.hide('bv-modal-example')">Close Me</b-button>
+  </b-modal>
+
+  <b-modal id="modal-1" title="BootstrapVue">
+    <p class="my-4">Hello from modal!</p>
+  </b-modal>
     <b-tabs>
         <b-tab class="uploads-tab" title="Uploads">
           <h1 class="tab-title">{{ imageCountMessage }}</h1>
@@ -13,6 +40,11 @@
               <div class="field" v-if="showUpload">
                 <div class="file is-boxed is-primary">
                   <label class="file-label">
+                    <!-- <image-compressor
+                      :done="getFiles"
+                      :scale="70"
+                      :quality="70"
+                      /> -->
                       <input
                         multiple
                         type="file"
@@ -30,6 +62,22 @@
                   </label>
                 </div>
               </div>
+              {{ canvasImage.blob }}
+               <img
+                    :src="canvasImage.blob"
+                  />
+              <template
+                  v-for="(file, index) in canvasImage"
+                >
+                <div
+                  class="image-container"
+                  :key="index"
+                >
+                  <img
+                    :src="file.blob"
+                  />
+                </div>
+              </template>
               <template
                   v-for="(file, index) in files"
                 >
@@ -150,6 +198,13 @@ export default class Profile extends Vue {
 
   private imagesToLarge = false;
 
+  private canvasImage = [];
+
+  // private getFiles(obj): void {
+  //   console.log(obj.compressed.blob, 'OBJ');
+  //   this.canvasImage = obj.compressed;
+  // }
+
   private chooseFile(): void {
     // @ts-ignore
     this.$refs['files'].click();
@@ -168,7 +223,8 @@ export default class Profile extends Vue {
     }
     return false;
   }
-  get imageCountMessage() {
+
+  private get imageCountMessage(): string {
     const count = this.imageMaxCount;
     if (this.uploadFiles.length >= count) {
       this.showUpload = false;
@@ -178,7 +234,7 @@ export default class Profile extends Vue {
     return `You can upload up to${this.uploadFiles.length - count} ${this.uploadFiles.length === 5 ? 'image' : 'images'}.`;
   }
 
-  private get user() {
+  private get user(): {} {
     return this.$store.getters.user;
   }
 
@@ -186,7 +242,7 @@ export default class Profile extends Vue {
     return this.$store.getters.getUserId;
   }
 
-  private get userImages() {
+  private get userImages(): {} {
     return this.$store.getters.userImage;
   }
 
@@ -366,5 +422,18 @@ export default class Profile extends Vue {
 
   .delete-button {
     margin-bottom: 20px;
+  }
+
+  .instruction-button {
+    margin-bottom: 20px;
+  }
+
+  .instruction-list {
+    text-align: left;
+
+    li {
+      margin-bottom: 20px;
+      font-size: 12px;
+    }
   }
 </style>

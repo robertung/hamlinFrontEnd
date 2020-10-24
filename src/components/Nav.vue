@@ -8,7 +8,7 @@
               <li><router-link :to="{ path: '/sponsors' }">Sponsors</router-link></li>
               <li><router-link :to="{ path: '/raffle' }">Raffle</router-link></li>
               <li><router-link :to="{ path: '/contact' }">Contact</router-link></li>
-              <li v-if="!loggedIn"><router-link :to="{ path: '/register' }">Register</router-link></li>
+              <li v-if="!loggedIn"><router-link :to="{ path: '/register' }">Register to upload</router-link></li>
               <li v-if="!loggedIn"><router-link :to="{ path: '/login' }">Login</router-link></li>
               <li v-if="loggedIn"><router-link :to="{ path: '/profile' }">Upload Pumpkins</router-link></li>
               <li v-if="loggedIn"><a href="#" @click="logOut()">Logout</a></li>
@@ -29,7 +29,7 @@
               <li><router-link @click.native="navHandler()" :to="{ path: '/sponsors' }">Sponsors</router-link></li>
               <li><router-link @click.native="navHandler()" :to="{ path: '/raffle' }">Raffle</router-link></li>
               <li><router-link @click.native="navHandler()" :to="{ path: '/contact' }">Contact</router-link></li>
-              <li v-if="!loggedIn"><router-link @click.native="navHandler()" :to="{ path: '/register' }">Register</router-link></li>
+              <li v-if="!loggedIn"><router-link @click.native="navHandler()" :to="{ path: '/register' }">Register to upload</router-link></li>
               <li v-if="!loggedIn"><router-link @click.native="navHandler()" :to="{ path: '/login' }">Login</router-link></li>
               <li v-if="loggedIn"><router-link @click.native="navHandler()" :to="{ path: '/profile' }">Upload Pumpkins</router-link></li>
               <li v-if="loggedIn"><a href="#" @click="logOut();navHandler()">Logout</a></li>
@@ -90,7 +90,7 @@ export default class Nav extends Vue {
   a {
     font-weight: bold;
     color: #fa9b03 ;
-    font-size: 22px;
+    font-size: 20px;
     text-decoration: none;
     &.router-link-exact-active {
       color: #0056b3;
