@@ -31,6 +31,7 @@
           />
         </b-form-group>
         <b-button
+          v-if="!uploading"
           :variant="buttonDisabled ? 'primary': 'secondary'"
           :disabled="!buttonDisabled"
           @click="login()"
@@ -38,6 +39,12 @@
           >
             Submit
         </b-button>
+        <b-spinner
+          v-if="uploading"
+          class="upload-button"
+          style="width: 3rem; height: 3rem;"
+          label="Large Spinner"
+        />
         <div class="error" v-if="errorMessage">
           <p>Email or Password is incorrect</p>
         </div>
@@ -56,11 +63,14 @@ export default class Login extends Vue {
 
     public errorMessage = false;
 
+    private uploading = false;
+
     public get buttonDisabled(): boolean {
       return this.email.length > 0 && this.password.length > 0;
     }
 
     public login(): void {
+      this.uploading = true;
       this.errorMessage = false;
       const payload: {} = {
         email: this.email,
@@ -69,6 +79,7 @@ export default class Login extends Vue {
 
       this.$store.dispatch('login', payload)
         .then((response) => {
+          this.uploading = false;
           if (response.status === 401) {
             this.errorMessage = true;
           }

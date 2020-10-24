@@ -44,13 +44,20 @@
           />
       </b-form-group>
         <b-button
+           v-if="!uploading"
           :disabled="!disableButton"
           :variant="disableButton ? 'primary': 'secondary'"
           @click="sendRaffle()"
           type="button"
-          >
+        >
           Send Raffle Information
       </b-button>
+      <b-spinner
+          v-if="uploading"
+          class="upload-button"
+          style="width: 3rem; height: 3rem;"
+          label="Large Spinner"
+      />
         <p>{{ responseMessage }}</p>
       </b-form>
     </div>
@@ -70,6 +77,8 @@ export default class Raffle extends Login {
 
     private responseMessage = '';
 
+    private uploading = false;
+
     private get disableButton(): boolean {
       return this.email.length > 0
         && this.name.length > 0
@@ -77,7 +86,7 @@ export default class Raffle extends Login {
     }
 
     private async sendRaffle(): Promise<void> {
-
+      this.uploading = true;
       const payload: {} = {
         email: this.email,
         name: this.name,
@@ -85,7 +94,7 @@ export default class Raffle extends Login {
       };
 
       await this.$store.dispatch('sendRaffle', payload);
-
+      this.uploading = false;
       this.responseMessage = 'Raffle Saved.';
       this.email = '';
       this.name = '';
