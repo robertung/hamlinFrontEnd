@@ -74,7 +74,6 @@ export default class VoteById extends Vue {
     }
     .images {
       display: flex;
-      flex-direction: column;
       justify-content: space-evenly;
       text-align: center;
       background: #fa9b03;
