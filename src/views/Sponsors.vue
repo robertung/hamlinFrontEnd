@@ -2,7 +2,7 @@
   <div class="sponsors view">
     <h1>Hamlin Halloween Sponsors</h1>
     <b-container class="container">
-      <b-row>
+       <b-row cols="1" cols-sm="2" cols-md="4" cols-lg="4">
         <b-col>
           <b-img
               class="image"
@@ -31,8 +31,8 @@
               src="https://hamlinhalloween.fra1.digitaloceanspaces.com/sponsors/Farm%20Table.png"
             />
         </b-col>
-      </b-row>
-      <b-row>
+      <!-- </b-row> -->
+      <!-- <b-row> -->
         <b-col>
           <b-img
               class="image"
@@ -61,8 +61,8 @@
               src="https://hamlinhalloween.fra1.digitaloceanspaces.com/sponsors/humblebee.jpg"
             />
         </b-col>
-      </b-row>
-            <b-row>
+      <!-- </b-row> -->
+            <!-- <b-row> -->
         <b-col>
           <b-img
               class="image"
@@ -91,8 +91,8 @@
               src="https://hamlinhalloween.fra1.digitaloceanspaces.com/sponsors/ralphs.png"
             />
         </b-col>
-      </b-row>
-      <b-row>
+      <!-- </b-row> -->
+      <!-- <b-row> -->
         <b-col>
           <b-img
               class="image"
@@ -114,6 +114,10 @@
       background: #fa9b03;
       padding: 5px;
       border-radius: 5px;
+
+      .image {
+        margin-bottom: 20px;
+      }
     };
 
     .row {
