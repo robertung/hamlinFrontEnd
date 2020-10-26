@@ -232,4 +232,8 @@ body {
     .image-container img {
         max-width: 100% !important;
     }
+
+    .vote-by-id .images {
+        display: block !important;
+    }
   }
