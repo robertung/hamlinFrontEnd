@@ -234,6 +234,6 @@ body {
     }
 
     .vote-by-id .images {
-        display: block;
+        display: block !important;
     }
   }
