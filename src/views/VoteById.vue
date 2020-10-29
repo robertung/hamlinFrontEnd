@@ -1,6 +1,6 @@
 <template>
   <div class="vote-by-id view">
-    <h1></h1>
+    <b-modal v-model="modalShow" ok-only>This pumpkin got a vote!</b-modal>
      <b-container>
        <div class="vote-button-container">
         <b-button :disabled="buttonDisabled" variant="primary" @click.prevent="vote()">{{ message }}</b-button>
@@ -31,6 +31,8 @@ export default class VoteById extends Vue {
 
   private buttonDisabled = false;
 
+  private modalShow = false;
+
   private get userById(): void {
     return this.$store.getters.getImageById;
   }
@@ -51,11 +53,16 @@ export default class VoteById extends Vue {
       .finally(() => {
         this.message = 'You have voted for this pumpkin';
         this.buttonDisabled = true;
+        this.modalShow = true;
       });
   }
 
   private created(): void {
     this.loadImages();
+  }
+
+  private beforeDestroy(): void {
+    this.modalShow = false;
   }
 }
 </script>
@@ -73,12 +80,14 @@ export default class VoteById extends Vue {
       }
     }
     .images {
-      display: flex;
-      justify-content: space-evenly;
       text-align: center;
       background: #fa9b03;
       margin: 5px;
       border-radius: 5px;
+      
+      img {
+        margin: 5px;
+      }
     }
 }
 </style>
