@@ -60,6 +60,10 @@ export default class VoteById extends Vue {
   private created(): void {
     this.loadImages();
   }
+
+  private beforeDestroy(): void {
+    this.modalShow = false;
+  }
 }
 </script>
 
