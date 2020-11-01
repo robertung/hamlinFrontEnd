@@ -6,6 +6,7 @@
       </div> -->
       <div class="halloween-title winners-wrapper">
         <h1>The Winners!</h1>
+        <h3>Thank you everyone for uploading</h3>
         <ul class="winner-list">
           <li class="images">1st Place <img style="max-width: 200px;" src="https://hamlinhalloween.fra1.digitaloceanspaces.com/pumpkins/n3h8mk20201026_114949.jpg" /></li>
           <li class="images">2nd Place <img style="max-width: 200px;" src="https://hamlinhalloween.fra1.digitaloceanspaces.com/pumpkins/san9wcF1D2D1ED-1F80-4F20-9FB1-4F908162B679.jpeg" /></li>
