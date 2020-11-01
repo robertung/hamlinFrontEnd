@@ -2,9 +2,10 @@
     <div class="login-view register-view view">
       <h1>Hamlin Halloween</h1>
       <b-form class="login-form">
-        <h4>Register Account</h4>
-        <p>All fields are required</p>
-        <b-form-group
+          <h4>Registration closed</h4>
+        <!-- <h4>Register Account</h4> -->
+        <!-- <p>All fields are required</p> -->
+        <!-- <b-form-group
           id="input-group-1"
           label="Name:"
           label-for="input-1"
@@ -68,15 +69,15 @@
             required
             placeholder="Confirm Password"
           />
-        </b-form-group>
-        <b-button
+        </b-form-group> -->
+        <!-- <b-button
           :disabled="!buttonDisabled"
           :variant="buttonDisabled ? 'primary': 'secondary'"
           @click="register()"
           type="button"
           >
           Register
-        </b-button>
+        </b-button> -->
         <div class="error" v-if="errorMessage">
           <p>Email is already being used</p>
         </div>

@@ -184,7 +184,8 @@ body {
     }
 
     .halloween-title h1, .halloween-title h2 {
-        font-size: 68px !important;
+        /* font-size: 68px !important; */
+        font-size: 45px !important;
     }
 
     #app {
@@ -216,7 +217,7 @@ body {
     .container {
         position: relative !important;
         z-index: 2 !important;
-        overflow: hidden;
+        /* overflow: hidden; */
         width: 100% !important;
     }
 
@@ -233,6 +234,11 @@ body {
 
     .image-container img {
         max-width: 100% !important;
+    }
+
+    .winner-list li {
+        font-size: 27px;
+        line-height: 35px;
     }
   }
 

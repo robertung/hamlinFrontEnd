@@ -27,9 +27,9 @@ export default class VoteById extends Vue {
 
   private userId = this.$route.params.id;
 
-  private message = 'Vote for this Pumpkin';
-
-  private buttonDisabled = false;
+  // private message = 'Vote for this Pumpkin';
+  private message = 'Voting is over until next Halloween';
+  private buttonDisabled = true;
 
   private get userById(): void {
     return this.$store.getters.getImageById;

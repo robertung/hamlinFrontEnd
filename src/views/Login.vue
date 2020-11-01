@@ -1,7 +1,8 @@
 <template>
     <div class="login-view view">
       <h1>Hamlin Halloween</h1>
-      <b-form class="login-form">
+      <div class="login-form"><h4>Login Closed</h4></div>
+      <!-- <b-form class="login-form">
         <h4>Login</h4>
         <b-form-group
           id="email"
@@ -41,7 +42,7 @@
         <div class="error" v-if="errorMessage">
           <p>Email or Password is incorrect</p>
         </div>
-      </b-form>
+      </b-form> -->
     </div>
 </template>
 

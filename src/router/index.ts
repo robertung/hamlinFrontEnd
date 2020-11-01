@@ -6,6 +6,14 @@ Vue.use(VueRouter);
 const pageTitle = 'Hamlin Halloween';
 const routes: Array<RouteConfig> = [
   {
+    path: '/',
+    name: 'Home',
+    component: () => import('../views/Home.vue'),
+    meta: {
+      title: `${pageTitle} : Home : Pumpkin Contest`,
+    },
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('../views/Login.vue'),
@@ -21,14 +29,6 @@ const routes: Array<RouteConfig> = [
     meta: {
       title: `${pageTitle} : Register`,
       requiresVisitor: true,
-    },
-  },
-  {
-    path: '/',
-    name: 'Home',
-    component: () => import('../views/Home.vue'),
-    meta: {
-      title: `${pageTitle} : Home : Pumpkin Contest`,
     },
   },
   {
@@ -87,26 +87,26 @@ const router = new VueRouter({
   mode: 'history',
 });
 
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!store.getters.loggedIn) {
-      next({
-        name: 'Login',
-      })
-    } else {
-      next()
-    }
-  } else if (to.matched.some(record => record.meta.requiresVisitor)) {
-    if (store.getters.loggedIn) {
-      next({
-        name: 'Profile',
-      })
-    } else {
-      next()
-    }
-  } else {
-    next()
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(record => record.meta.requiresAuth)) {
+//     if (!store.getters.loggedIn) {
+//       next({
+//         name: 'Login',
+//       })
+//     } else {
+//       next()
+//     }
+//   } else if (to.matched.some(record => record.meta.requiresVisitor)) {
+//     if (store.getters.loggedIn) {
+//       next({
+//         name: 'Profile',
+//       })
+//     } else {
+//       next()
+//     }
+//   } else {
+//     next()
+//   }
+// });
 
 export default router;
