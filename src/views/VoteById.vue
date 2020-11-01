@@ -27,9 +27,9 @@ export default class VoteById extends Vue {
 
   private userId = this.$route.params.id;
 
-  private message = 'Vote for this Pumpkin';
+  private message = 'Voting closed';
 
-  private buttonDisabled = false;
+  private buttonDisabled = true;
 
   private modalShow = false;
 

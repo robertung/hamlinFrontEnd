@@ -1,7 +1,8 @@
 <template>
     <div class="login-view register-view view">
       <h1>Hamlin Halloween</h1>
-      <b-form class="login-form">
+      <div class="login-form">Closed</div>
+      <!-- <b-form class="login-form">
         <h4>Register Account</h4>
         <p>All fields are required</p>
         <b-form-group
@@ -90,7 +91,7 @@
         <div class="error" v-if="passordMatch">
           <p>Passwords do not match</p>
         </div>
-      </b-form>
+      </b-form> -->
     </div>
 </template>
 

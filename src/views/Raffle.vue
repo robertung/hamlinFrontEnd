@@ -1,7 +1,8 @@
 <template>
     <div class="login-view view">
       <h1>Hamlin Halloween Raffle</h1>
-      <b-form class="login-form">
+      <div class="login-form">Closed</div>
+      <!-- <b-form class="login-form">
         <h4>Sign up for the raffle</h4>
         <b-form-group
           id="email"
@@ -59,7 +60,7 @@
           label="Large Spinner"
       />
         <p>{{ responseMessage }}</p>
-      </b-form>
+      </b-form> -->
     </div>
 </template>
 
